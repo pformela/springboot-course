@@ -2,17 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Student form</title>
+    <title>Student confirmation</title>
 </head>
 <body>
-    <form th:action="@{/process-student-form}" th:object="${student}" method="POST">
-        <label for="firstName">First name</label>
-        <input type="text" th:field="*{firstName}" id="firstName"/>
-        <br/>
-        <label for="lastName">Last name</label>
-        <input type="text" th:field="*{lastName}" id="lastName"/>
-        <br/>
-        <button type="submit">Submit</button>
-    </form>
+    <h3>Student confirmation</h3>
+    <p th:text="'Student ' + ${student.firstName} + ' ' + ${student.lastName} + ' (' + ${student.country} + ') has been added to the database.'"></p>
+    <p th:text="'Favorite language: ' + ${student.favoriteLanguage}"></p>
+    <p>Operating systems:</p>
+    <ul>
+        <li th:each="os: ${student.operatingSystems}" th:text="${os}"></li>
+    </ul>
 </body>
 </html>
